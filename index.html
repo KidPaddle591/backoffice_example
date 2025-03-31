@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Index</title>
+		<link rel="stylesheet" href="/assets/vendors/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body >
+		<!-- Main--------------------------------------- -->
+		<main>
+			<section class="page">
+				<div class="container-fluid100 d-flex">
+					<div class="col-2 bg-secondary">
+						<img src="/assets/images/pictures/Logo.png" alt="">
+						<ul class="barre-laterale list-unstyled">
+							<li class="d-flex p-1">
+								<img src="/assets/images/icons/file-text.png" alt="" class="p-1">
+								<a class="text-decoration-none text-white" href="#">Comptabilité</a>
+							</li>
+							<li class="d-flex p-1">
+								<img src="/assets/images/icons/shopping-bag.png" alt="" class="p-1">
+								<a class="text-decoration-none text-white" href="#">Produits</a>
+							</li>
+							<li class="d-flex p-1">
+								<img src="/assets/images/icons/truck.png" alt="" class="p-1">
+								<a class="text-decoration-none text-white" href="#">Fournisseurs</a>
+							</li>
+							<li class="d-flex p-1">
+								<img src="/assets/images/icons/archive.png" alt="" class="p-1">
+								<a class="text-decoration-none text-white" href="#">Commandes</a>
+							</li>
+							<li class="d-flex p-1">
+								<img src="/assets/images/icons/settings.png" alt="" class="p-1">
+								<a class="text-decoration-none text-white" href="#">Paramètres</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-10">
+						<div class="row bg-danger">
+							<h1 class="text-white">Liste des produits</h1>
+						</div>
+						<div class="row mt-5">
+							<div class="col-4"></div>
+							<div class="col-5 ">
+								<form class="d-flex" role="search">
+									<input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+									<button class="btn btn-outline-primary" type="submit">Search</button>
+								</form>
+							</div>
+							<div class="col-2">
+								<div id="add"class="bg-danger d-flex">
+									<img src="/assets/images/icons/plus.png" alt="">
+									<button class="btn">Ajouter</button>
+								</div>
+							</div>
+							<div class="col-1">
+								<!--colonne vide largeur 1-->
+							</div>
+						</div>
+						<div>
+							<table>
+								<thead>
+									<tr>
+										<th>Référence</th>
+										<th>Catégories</th>
+										<th>Libellé</th>
+										<th>Prix</th>
+										<th>En Stock</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody id="tableau">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+				<!--colonne vide largeur 1-->
+			<section id="modalAfficher" class="hiddenmodal">
+				<!--Modal Ajouter Produit-->
+			</section>
+			<section id=modalAjouter class="hiddenmodal">
+				<div class="row mt-5">
+					<div class="col-1">
+					</div>
+					<div class="col-10">
+						<form id="form-utilisateur" class="d-flex ">
+							<div class="col-6 d-flex flex-column p-2">
+								<div class="p-2 d-flex flex-column">
+									<label for="Reference">Reférence</label>
+									<input type="text" name="Reference" id="ref" placeholder="">
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="categories">Categories</label>
+									<select name="categories" id="categories">
+										<option value=""></option>
+										<option value="Téléphones">Téléphones</option>
+										<option value="Télévisions">Télévisions</option>
+										<option value="Audio">Audio</option>
+										<option value="Appareils photo">Apareils photo</option>
+										<option value="Ordinateurs de bureau">Ordinateurs de bureau</option>
+										<option value="Ordinateurs portables">Ordinateurs portables</option>
+										<option value="Tablettes">Tablettes</option>
+									</select>
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="Libellé">Libellé</label>
+									<input type="text" name="Libellé" id="libelle" placeholder="">
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="Prix">Prix de vente conseillé</label>
+									<input type="text" name="Prix" id="price" placeholder="">
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="photo">Photos</label>
+									<input type="file" name="Photo" id="photo" placeholder="">
+								</div>
+							</div>
+							<div class="col-6 d-flex flex-column p-2">
+								<div class="p-2 d-flex flex-column">
+									<label for="description">Description</label>
+									<textarea name="description" id="description" placeholder="" rows="10"></textarea>
+								</div>	
+								<div class="p-2 d-flex">
+									<input type="checkbox" name="EnStock" id="stock">
+									<label for="stock">En Stock</label>
+								</div>	
+								<div class="bg-danger d-flex">
+									<button id="submit" type="submit"><img src="/assets/images/icons/plus.png" alt="">Enregistrer</button>
+								</div>
+								<div class="row">
+									<button class="back-btn" onclick="back()">Retour</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-1">
+					</div>
+				</div>
+			</section>
+			<!--Modal Editer Produit-->
+			<section id=modalEditer class="hiddenmodal">
+				<div class="row mt-5">
+					<div class="col-1">
+					</div>
+					<div class="col-10">
+						<form id="form-utilisateur" class="d-flex ">
+							<div class="col-6 d-flex flex-column p-2">
+								<div class="p-2 d-flex flex-column">
+									<label for="Reference">Reférence</label>
+									<input type="text" name="Reference" id="ref" placeholder="">
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="categories">Categories</label>
+									<select name="categories" id="categories">
+										<option value=""></option>
+										<option value="Téléphones">Téléphones</option>
+										<option value="Télévisions">Télévisions</option>
+										<option value="Audio">Audio</option>
+										<option value="Appareils photo">Apareils photo</option>
+										<option value="Ordinateurs de bureau">Ordinateurs de bureau</option>
+										<option value="Ordinateurs portables">Ordinateurs portables</option>
+										<option value="Tablettes">Tablettes</option>
+									</select>
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="Libellé">Libellé</label>
+									<input type="text" name="Libellé" id="libelle" placeholder="">
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="Prix">Prix de vente conseillé</label>
+									<input type="text" name="Prix" id="price" placeholder="">
+								</div>
+								<div class="p-2 d-flex flex-column">
+									<label for="photo">Photos</label>
+									<input type="file" name="Photo" id="photo" placeholder="">
+								</div>
+							</div>
+							<div class="col-6 d-flex flex-column p-2">
+								<div class="p-2 d-flex flex-column">
+									<label for="description">Description</label>
+									<textarea name="description" id="description" placeholder="" rows="10"></textarea>
+								</div>	
+								<div class="p-2 d-flex">
+									<input type="checkbox" name="EnStock" id="stock">
+									<label for="stock">En Stock</label>
+								</div>	
+								<div class="bg-danger d-flex">
+									<button id="edit" type="submit"><img src="/assets/images/icons/edit.png" alt="">Modifier</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-1">
+					</div>
+					<div class="row">
+						<button class="back-btn" onclick="back()">Retour</button>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer------------------------------------->
+		<footer>
+			<div>
+			</div>
+		</footer>
+    </body>
+	<script src="script.js"></script>
+</html>
