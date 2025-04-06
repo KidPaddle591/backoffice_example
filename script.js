@@ -38,10 +38,10 @@ tablehtml.innerHTML = "";
         let productEach=donnees[i];
         if (productEach.stock>0){ //pour le stock avec bouton rouge ou vert
             stockimage=document.createElement("img")
-            stockimage.src="/assets/images/icons/green.png"
+            stockimage.src="assets/images/icons/green.png"
         }else{
             stockimage=document.createElement("img")
-            stockimage.src="/assets/images/icons/red.png"
+            stockimage.src="assets/images/icons/red.png"
         }
         tr_to_add.innerHTML= `
             <td>${productEach.reference}</td>
